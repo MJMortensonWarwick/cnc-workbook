@@ -40,5 +40,16 @@ sudo docker container rm <REPLACE WITH YOUR CONTAINER ID>
 ## Creating a Webserver in a Container
 
 ```
+sudo mkdir /test
 
+cd /test
+
+sudo touch /test/Dockerfile
+
+sudo vim /test/index.html
+
+sudo vim Dockerfile
+
+sudo docker build -t my-apache2 .
 ```
+
