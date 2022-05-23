@@ -1,2 +1,9 @@
-FROM httpd:2.4
-COPY index.html /usr/local/apache2/htdocs/
+FROM python:3.10-slim
+
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
