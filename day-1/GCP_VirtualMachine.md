@@ -2,7 +2,7 @@
 
 ### Introduction
 
-This book provides an introduction to the Google Cloud Platform (GCP). We will use Google Cloud Run with a Docker container, to run a simple serverless Python Flask web application that we will build.
+This book provides an introduction to the Google Cloud Platform (GCP). We will create a Linux Virtual Machine set to our chosen configuration and install and run various software on that machine.
 
 ### Docker
 
