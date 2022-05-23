@@ -1,12 +1,12 @@
-﻿# Cloud Native Labs: Python, Docker and Google Cloud Platform
+﻿# Cloud Native Labs: Google Demo
 
 ### Introduction
 
-This book provides an introduction to the Google Cloud Platform (GCP). We will use Google Cloud Run with a Docker container, to run a simple serverless Python Flask web application that we will build.
+This book provides an introduction to the Google Cloud Platform (GCP). We will create a Virtual Machine instance using Google Cloud's Compute Engine and install some packages.
 
 ### Docker
 
-Using Docker is a necessary component of completing this tutorial. The most user friendly way to achieve this is by using the Docker Desktop application. Unfortunately due to Docker Desktop requiring certain versions of Windows operating systems, using Docker Desktop may not be feasible for everybody. A way to circumvent this issue is by running Docker via a virtual machine and installing a Linux operating system. This method can be quite intensive on a machines resources, having to essentially store and run two operating systems at the same time, as well as require the installation of additional software. 
+Using Docker is a necessary requirement for completing this module. The most user friendly way to achieve this is by using the Docker Desktop application. Unfortunately due to Docker Desktop requiring certain versions of Windows operating systems, using Docker Desktop may not be feasible for everybody. A way to circumvent this issue is by running Docker via a virtual machine and installing a Linux operating system. This method can be quite intensive on a machines resources, having to essentially store and run two operating systems at the same time, as well as require the installation of additional software. 
 
 This provides us with a wonderful opportunity to utilise a virtual machine instance on the cloud, which we will do using GCP Compute Engine to launch a Linux virtual machine instance hosted on a Google server.
 
