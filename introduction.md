@@ -2,11 +2,11 @@
 
 ### Introduction
 
-This book provides an introduction to the Google Cloud Platform (GCP). We will create a Virtual Machine instance using Google Cloud's Compute Engine and install some packages.
+This book provides an introduction to the Google Cloud Platform (GCP). We will use Google Cloud Run with a Docker container, to run a simple serverless Python Flask web application that we will build.
 
 ### Docker
 
-Using Docker is a necessary requirement for completing this module. The most user friendly way to achieve this is by using the Docker Desktop application. Unfortunately due to Docker Desktop requiring certain versions of Windows operating systems, using Docker Desktop may not be feasible for everybody. A way to circumvent this issue is by running Docker via a virtual machine and installing a Linux operating system. This method can be quite intensive on a machines resources, having to essentially store and run two operating systems at the same time, as well as require the installation of additional software. 
+Using Docker is a necessary component of completing this tutorial. The most user friendly way to achieve this is by using the Docker Desktop application. Unfortunately due to Docker Desktop requiring certain versions of Windows operating systems, using Docker Desktop may not be feasible for everybody. A way to circumvent this issue is by running Docker via a virtual machine and installing a Linux operating system. This method can be quite intensive on a machines resources, having to essentially store and run two operating systems at the same time, as well as require the installation of additional software. 
 
 This provides us with a wonderful opportunity to utilise a virtual machine instance on the cloud, which we will do using GCP Compute Engine to launch a Linux virtual machine instance hosted on a Google server.
 
@@ -16,7 +16,13 @@ Our first step is to log into Google Cloud and go to the GCP Console.
 
 ![GCP Dashboard](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/a2e787456015c8f2ac9e7d35b7f652f3ac45bf43/images/gcp-dashboard.PNG)
 
-## TODO1: Create Project
+We will start by creating a project for our walkthrough. To create a new project you click your current project that is located on the left side of the top navigation bar and click the **new project** button .
+
+![Create New Project](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/gcp-new-project.png)
+
+We can give our project an appropriate name and then click the **create** button.
+
+![Create New Project](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/gcp-create-project.png)
 
 From here we can either click the side menu and hover over **Compute Engine** and click **VM instances** or search for **VM instances** in the search bar.
 
@@ -38,9 +44,57 @@ Scroll down further and we will reach the **Boot disk** section and click the **
 
 ![Boot Disk](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/vm-instance-boot-disk.PNG)
 
+We can then scroll down to the bottom of the page, ignoring the other configuration options as they are not relevant to us for this task and click the **create** button.
 
+![Creating VM Instance](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/gcp-final-create-instance.png)
 
+After a short while, our VM instance should be created and initialised and ready for us to access. It is super simple to connect to our Linux VM using the Google Cloud Console by clicking on the SSH button on our instance. 
 
+![Initialised VM](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/gcp-ssh-instance.png)
 
+![Connecting to VM](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/connecting-to-instance.png)
 
+![Connected to VM](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/connected-to-instance.png)
 
+After successfully connecting to our Linux VM we can see the terminal. (If you want to increase the font size you can do so by clicking on the cog and changing the font size setting).
+
+We will now install some of the necessary libraries and software for this module. We’ll begin by updating the core Linux packages:
+
+```sudo yum update```
+
+“sudo” (which stands for super-user do) means that we will use admin privileges to do the updates. “yum” (Yellowdog Updater, Modified) is a package manager for many flavours of Linux (In our case CentOS). You may need to use a different package manager for other operating systems and the commands will be different.
+
+You will be prompted to confirm you want to do these installations which you can do by typing “y” into the console. If its successful it should tell you so:
+
+![Updating Core Linux Packages](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/sudo-yum-update.png)
+
+Next we will install Docker, again using yum (and again you need to type “y” to confirm):
+
+```sudo yum install docker```
+
+Once installed we will start Docker and “enable” it. This latter command means that, using Linux’s system service manager, Docker will be setup to start automatically if our instance were to reboot:
+
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+Finally we will install Python 3 on to the machine (again, type “y” when prompted):
+
+```sudo yum install python3```
+
+To verify that Docker is working properly, we can run the standard “Hello World” test:
+
+``` sudo docker run hello-world```
+
+which should produce the following output:
+
+![Docker Hello World](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/docker-hello-world.png)
+
+We can do the same for Python3 and verify that our installation was successful, writing everyone's favourite "Hello World! program:
+
+```python```
+
+```print("Hello World!")```
+
+![Python Hello World](https://raw.githubusercontent.com/Jordan-Bruno/cnc-workbook/main/images/python-hello-world.png)
