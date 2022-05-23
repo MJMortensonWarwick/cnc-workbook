@@ -1,4 +1,4 @@
-﻿# Cloud Native Labs: Google Demo
+﻿# Cloud Native Labs: Google Cloud Platform Demo
 
 ### Introduction
 
