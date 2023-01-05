@@ -148,6 +148,33 @@ which should produce the following output:
 
 As we can see, we have one image (the CentOS image we pulled) and no containers. As we add more containers and images this data should update accordingly.
 
+#### Docker Best Practices
+
+There are several ‘best practice’ patterns associated with developing for Docker. These are in addition to the topics discussed in the slides.
+
+__Base Images__
+One of the key benefits of Docker is resource efficiencies. Some of these benefits are lost through poor choice of image. Best practice is to avoid generic images, and select an image that most directly matches the use-case. In doing so, unnecessary libraries can be excluded.
+
+__Custom Images__
+If there are likely to be multiple apps required with similar dependencies and components, in the longer run it will be more efficient to create a custom image that can be used for each. This also has the benefit of creating a familiar environment for developers.
+
+__Tagging__
+It is always sensible to give meaningful names/tags to images. For a development image including “dev” in the name will help ensure that production images are not accidentally adjusted. Including versioning in the tag name will also make it easier to manage version control.
+
+__Setting User in Dockerfiles__
+Each Dockerfile should have a specified user (unlike in the above example) to avoid running containers as root. This represents a significant security risk should an attacker be able to break the container.
+
+__Manifest Best Practices__
+When writing a manifest/Dockerfile, it is recommended to seek to follow the principals of “processes” and “disposability” (see lecture slides), and to make builds as efficient and as fast as possible. For more on this topic see
+here: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/.
+
+__Automation__
+Docker Compose is a useful tool to help automate container configuration. Documentation is available here: https://docs.docker.com/compose/overview/. 
+
+__One App per Container__
+Best practice for the cloud is to limit deployment to just one app per container. A container is designed to co-exist with the application for the duration of its lifecycle – when an app should be retired, the container should too. If there are multiple apps in the same container this becomes problematic, and the container design may become sub-optimal
+
+
 Returning to our current project, the next step is to build a Dockerfile:
 
 ```
