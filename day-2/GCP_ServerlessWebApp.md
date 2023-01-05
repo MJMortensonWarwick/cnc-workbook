@@ -100,7 +100,55 @@ Again press the `ESC` key and type `:wq!`  and return.
 
 ### Docker
 
-Our next step is to build a Dockerfile:
+Before we setup Docker for the project, let's take a moment to explore the Docker system and CLI (command line interface). As we did in the previous tutorial we will start by installing and enabling Docker:
+
+```
+sudo yum install docker
+sudo systemctl start docker
+suco systemctl enable docker
+```
+
+As briefly demonstrated we can test the installation using the "Hello, World" test:
+
+```
+sudo docker run hello-world 
+```
+
+You can get a full list of available commands by typing:
+
+```
+sudo docker
+```
+
+With Docker started (and working) we can pull images from the Docker Hub to use:
+
+```
+sudo docker pull centos
+```
+
+This pulls the official image for CentOS. We can verify the install using:
+
+```
+sudo docker images centos
+```
+
+which should produce something like:
+
+![image](https://user-images.githubusercontent.com/48418248/210811831-e5dfbb36-8c38-4d55-8178-2ff1733b8ede.png)
+
+We can also check the overall status of the Docker install using:
+
+```
+sudo docker info
+```
+
+which should produce the following output:
+
+![image](https://user-images.githubusercontent.com/48418248/210812082-b9d1a888-f7b8-4c6b-868f-1223cbb41a38.png)
+
+As we can see, we have one image (the CentOS image we pulled) and no containers. As we add more containers and images this data should update accordingly.
+
+Returning to our current project, the next step is to build a Dockerfile:
 
 ```
 touch Dockerfile
