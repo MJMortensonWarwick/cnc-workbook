@@ -174,7 +174,7 @@ Docker Compose is a useful tool to help automate container configuration. Docume
 __One App per Container__
 Best practice for the cloud is to limit deployment to just one app per container. A container is designed to co-exist with the application for the duration of its lifecycle – when an app should be retired, the container should too. If there are multiple apps in the same container this becomes problematic, and the container design may become sub-optimal
 
-#### Creating a Dockerfile
+### Creating a Dockerfile
 
 Returning to our current project, the next step is to build a Dockerfile:
 
